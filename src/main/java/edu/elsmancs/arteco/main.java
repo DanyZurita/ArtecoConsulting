@@ -6,5 +6,6 @@ public class Main {
 		String loren = Crawler.mockURL();
 		Logica.totalWords(loren);
 		Logica.totalPhrases(loren);
+		Logica.totalParagraphs(loren);
 	}
 }
