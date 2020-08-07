@@ -2,6 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.elsmancs</groupId>
   <artifactId>ArtecoConsulting</artifactId>
+  <packaging>jar</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>ArtecoConsulting</name>
   <description>Ejercicio de programación</description>
@@ -22,6 +23,12 @@
 	    <groupId>org.jsoup</groupId>
 	    <artifactId>jsoup</artifactId>
 	    <version>1.11.3</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.seleniumhq.selenium</groupId>
+	  <artifactId>selenium-java</artifactId>
+	  <version>3.141.59</version>
 	</dependency>
   </dependencies>
 </project>
