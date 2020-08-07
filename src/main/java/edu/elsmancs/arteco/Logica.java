@@ -27,7 +27,7 @@ public class Logica {
 		    
 		    //Comprueba que la frase acabe en "." para el contador
 		    if (sentence.lastIndexOf(".") != -1) {
-		    	numPhrases += 1;
+		    	numPhrases++;
 		    }
 		    
 		}
@@ -36,4 +36,15 @@ public class Logica {
 		return numPhrases;
 	}
 	
+	public static Integer totalParagraphs(String loren) {
+		Integer numParagraphs = 0;
+		String busqueda = "</p>";
+		while (loren.indexOf(busqueda) > -1) {
+			loren = loren.substring(loren.indexOf(busqueda)+busqueda.length(),loren.length());
+		    numParagraphs++; 
+		}
+		
+		System.out.println ("Parrafos: " + numParagraphs);
+		return numParagraphs;
+	}
 }
