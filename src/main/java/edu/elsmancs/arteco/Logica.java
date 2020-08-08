@@ -6,15 +6,17 @@ import java.util.StringTokenizer;
 public class Logica {
 	
 	public static Integer totalWords(String loren) {
-		StringTokenizer st = new StringTokenizer(loren);
+		String lorenClean = removePHtmlNotations(loren);
+		StringTokenizer st = new StringTokenizer(lorenClean);
 		Integer numWords = st.countTokens();
 		System.out.println ("Palabras: " + numWords);
 		return numWords;
 	}
 	
 	public static Integer totalPhrases(String loren) {
+		String lorenClean = removePHtmlNotations(loren);
 		BreakIterator bi = BreakIterator.getSentenceInstance();
-		bi.setText(loren);
+		bi.setText(lorenClean);
 		Integer numPhrases = 0;
 		int index = bi.first();
 		String sentence = "";
@@ -22,7 +24,7 @@ public class Logica {
 		for (int end = bi.next();
 		     end != BreakIterator.DONE;
 		     index = end, end = bi.next()) {
-			sentence = loren.substring(index,end);
+			sentence = lorenClean.substring(index,end);
 		    //System.out.println("Sentence: " + sentence);
 		    
 		    //Comprueba que la frase acabe en "." para el contador
@@ -46,5 +48,11 @@ public class Logica {
 		
 		System.out.println ("Parrafos: " + numParagraphs);
 		return numParagraphs;
+	}
+	
+	private static String removePHtmlNotations(String loren) {
+		String lorenClean = loren.replaceAll("<p>", "");
+		lorenClean = lorenClean.replaceAll("</p>", "");
+		return lorenClean;
 	}
 }
