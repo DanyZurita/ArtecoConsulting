@@ -7,5 +7,6 @@ public class Main {
 		Logica.totalWords(loren);
 		Logica.totalPhrases(loren);
 		Logica.totalParagraphs(loren);
+		Logica.totalPalindroms(loren);
 	}
 }
