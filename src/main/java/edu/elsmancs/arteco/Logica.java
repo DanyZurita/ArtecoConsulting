@@ -55,4 +55,35 @@ public class Logica {
 		lorenClean = lorenClean.replaceAll("</p>", "");
 		return lorenClean;
 	}
+	
+	public static Integer totalPalindroms(String loren) {
+		Integer numPalindroms = 0;
+		String lorenClean = removePHtmlNotations(loren.replaceAll("\\.", "")).toLowerCase();
+		StringTokenizer st = new StringTokenizer(lorenClean);
+		while (st.hasMoreTokens()) {
+			String word = st.nextToken();
+			int i = 0;
+			int begin  = 0;
+		    int end = word.length() - 1;
+		    int middle = (begin + end)/2;
+		 
+		    for (i = begin; i <= middle; i++) {
+		      if (word.charAt(begin) == word.charAt(end)) {
+		        begin++;
+		        end--;
+		      }
+		      else
+		        break;
+		    }
+		    //Descartar palindromos de menos de 3 chars
+		    if (i == middle + 1 && middle >= 1) {
+	    	  numPalindroms++;
+	    	  System.out.println ("Palabra palindroma: " + word);
+		      }
+		}
+		
+		System.out.print("Palindromos: " + numPalindroms);
+		return numPalindroms;
+	}
+	
 }
