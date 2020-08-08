@@ -18,5 +18,10 @@ public class ArtecoConsultingTest {
 		assertEquals(originalLorem, actualLorem);
 	}
 	
-
+	@Test
+    public void testTotalWords() {
+		String ejemplo = "Esto es un texto de ejemplo para el caso test de contar palabras.";
+		Integer actualTotalWords = Logica.totalWords(ejemplo);
+		Assert.assertEquals(14, actualTotalWords, 0d);
+	}
 }
