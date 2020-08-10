@@ -1,6 +1,12 @@
 package edu.elsmancs.arteco;
 
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,9 +21,28 @@ public class Crawler {
 		WebElement generate = driver.findElement(By.id("generate"));
 		generate.click();
 		WebElement loren = driver.findElement(By.id("lipsum"));
-		System.out.print("-----------------------------------------------------------------------------------\n "
+		System.out.print("-----------------------------------------------------------------------------------\n"
 				+ "Text : " + loren);
 		driver.quit();
+	}
+	
+	public static String getURLJSoup(String url) {
+		String output = "";
+		Document loren;
+		try {
+			loren = Jsoup.connect(url).get();
+			Elements content = loren.select("#lipsum p");
+			
+			for (Element line : content) {
+				output += line.text() + " </p> ";
+			}
+			System.out.print("-----------------------------------------------------------------------------------"
+					+ "\nText : " + output);
+			
+		} catch (IOException e) {
+			System.out.print("La URL no es correcta");
+		}
+		return output;
 	}
 	
 	public static String mockURL() {
