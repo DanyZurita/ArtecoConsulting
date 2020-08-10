@@ -96,7 +96,7 @@ public class Logica {
 		return topWords;
 	}
 	
-	public static Map<String, Integer> topTuples(String lorem, int topMax) {
+	public static String[] topTuples(String lorem, int topMax) {
 		final int TOP = topMax;
 		Map<String, Integer> tuples = new HashMap<String, Integer>();
 		List<String> loremList = loremList(lorem);
@@ -112,7 +112,7 @@ public class Logica {
 		final String[] topTuples = getTopString(tuples, TOP);
 		
         System.out.println("Top " + TOP + " tuplas más repetidas: " + Arrays.toString(topTuples) + "\nRespectivas cuentas: " + topCounts);
-		return tuples;
+		return topTuples;
 	}
 	
 	private static List<String> loremList(String lorem) {
