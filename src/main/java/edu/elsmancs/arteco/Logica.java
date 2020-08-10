@@ -61,8 +61,8 @@ public class Logica {
 	}
 	
 	static String removePHtmlNotations(String loren) {
-		String lorenClean = loren.replaceAll(" <p> ", "");
-		lorenClean = lorenClean.replaceAll(" </p> ", "");
+		String lorenClean = loren.replaceAll(" <p> ", " ");
+		lorenClean = lorenClean.replaceAll(" </p> ", " ");
 		return lorenClean;
 	}
 	
