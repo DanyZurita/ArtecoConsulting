@@ -56,11 +56,25 @@ public class ArtecoConsultingTest {
 	@Test
 	@SuppressWarnings("deprecation")
     public void testTopWords() {
+		int TOP = 2;
 		String raw = "Esto es. Un texto de ejemplo. Para el caso test. De contar palabras. Que se repiten. En el texto. Un un un de. ";
-		String[] original = new String[2];
-		original[0] = "un";
-		original[1] = "de";
-		String[] actualTopWords = Logica.topWords(raw, 2);
-		Assert.assertEquals(original, actualTopWords);
+		String[] expected = new String[TOP];
+		expected[0] = "un";
+		expected[1] = "de";
+		String[] actualTopWords = Logica.topWords(raw, TOP);
+		Assert.assertEquals(expected, actualTopWords);
+	}
+	
+	@Test
+	@SuppressWarnings("deprecation")
+    public void testTopTuples() {
+		int TOP = 3;
+		String raw = "Esto es. Un texto de ejemplo. Para el caso test. De contar palabras. Que se repiten. Un texto. De ejemplo. Caso test. Caso test.";
+		String[] expected = new String[TOP];
+		expected[0] = "caso test";
+		expected[1] = "texto de";
+		expected[2] = "de ejemplo";
+		String[] actualTopTuples = Logica.topTuples(raw, TOP);
+		Assert.assertEquals(expected, actualTopTuples);
 	}
 }
