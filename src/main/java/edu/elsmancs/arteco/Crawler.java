@@ -23,7 +23,8 @@ public class Crawler {
 		generate.click();
 		WebElement loren = driver.findElement(By.id("lipsum"));
 		System.out.print("-----------------------------------------------------------------------------------\n"
-				+ "Text : " + loren);
+				+ "Text : " + loren +
+				"\n-----------------------------------------------------------------------------------");
 		driver.quit();
 	}
 	*/
@@ -39,7 +40,8 @@ public class Crawler {
 				output += line.text() + " </p> ";
 			}
 			System.out.print("-----------------------------------------------------------------------------------"
-					+ "\nText : " + output);
+					+ "\nText : " + output +
+					"\n-----------------------------------------------------------------------------------\n");
 			
 		} catch (IOException e) {
 			System.out.print("La URL no es correcta");
