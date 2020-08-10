@@ -103,7 +103,7 @@ public class Logica {
 		Iterator<String> it = loremList.iterator();   
 		
 		//Añadir las tuplas al Hashmap
-		it = findTuples(it, tuples);
+		it = countAllTuples(it, tuples);
 		
 		//Lista para saber las palabras que más se repiten del HashMap
 		final List<Integer> topCounts = topCounts(tuples, TOP);
@@ -146,7 +146,7 @@ public class Logica {
         .collect(Collectors.toList());
 	}
 	
-	private static Iterator<String> findTuples(Iterator<String> it, Map<String, Integer> map) {
+	private static Iterator<String> countAllTuples(Iterator<String> it, Map<String, Integer> map) {
 		String currentWord = null;
 		String previousWord = null;
 		while( it.hasNext() ) {
