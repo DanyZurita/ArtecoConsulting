@@ -1,6 +1,7 @@
 package edu.elsmancs.arteco;
 
 import java.text.BreakIterator;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -21,7 +22,6 @@ public class Logica {
 	
 	public static Integer totalPhrases(String loren) {
 		String lorenClean = removePHtmlNotations(loren);
-		System.out.print(lorenClean);
 		BreakIterator bi = BreakIterator.getSentenceInstance();
 		bi.setText(lorenClean);
 		Integer numPhrases = 0;
@@ -66,9 +66,9 @@ public class Logica {
 	}
 	
 	public static Integer totalPalindroms(String loren) {
-		Integer numPalindroms = 0;
 		String lorenClean = removePHtmlNotations(loren.replaceAll("\\.", "")).toLowerCase();
 		StringTokenizer st = new StringTokenizer(lorenClean);
+		List<String> palindromosList = new ArrayList<String>();
 		while (st.hasMoreTokens()) {
 			String word = st.nextToken();
 			int i = 0;
@@ -86,13 +86,12 @@ public class Logica {
 		    }
 		    //Descartar palindromos de menos de 3 chars
 		    if (i == middle + 1 && middle >= 1) {
-	    	  numPalindroms++;
-	    	  System.out.println ("Palabra palindroma: " + word);
+	    	  palindromosList.add(word);
 		      }
 		}
 		
-		System.out.print("Palindromos: " + numPalindroms);
-		return numPalindroms;
+		System.out.print("Palindromos: " + palindromosList + "\nTotal palindromos: "+ palindromosList.size());
+		return palindromosList.size();
 	}
 	
 	public static Map<String, Integer> topWords(String loren, int topMax) {
