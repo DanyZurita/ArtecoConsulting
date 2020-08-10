@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -94,7 +95,7 @@ public class Logica {
 		return palindromosList.size();
 	}
 	
-	public static Map<String, Integer> topWords(String loren, int topMax) {
+	public static String[] topWords(String loren, int topMax) {
 		final int TOP = topMax;
 		Map<String, Integer> words = new HashMap<String, Integer>();
 		String lorenClean = removePHtmlNotations(loren.replaceAll("\\.", "")).toLowerCase();
@@ -129,6 +130,65 @@ public class Logica {
             }
         });
         System.out.println("\nTop 5 palabras más repetidas: " + Arrays.toString(topWords) + "\nRespectivas cuentas: " + topCounts2);
-		return words;
+		return topWords;
+	}
+	
+	public static Map<String, Integer> topTuples(String lorem, int topMax) {
+		final int TOP = topMax;
+		Map<String, Integer> tuples = new HashMap<String, Integer>();
+		List<String> loremList = loremList(lorem);
+		Iterator<String> it = loremList.iterator();   
+		String currentWord = null;
+		String previousWord = null;
+		
+		//Añadir las tuplas al Hashmap
+		while( it.hasNext() ) {
+		  currentWord = it.next();
+		  if( previousWord != null ) {
+		    String key = previousWord.concat( " " ).concat( currentWord );
+		    if( tuples.containsKey( key ) ) {
+		      Integer lastCount = tuples.get( key );
+		      tuples.put( key, lastCount + 1 );
+		    } else {
+		      tuples.put( key, 1 );
+		    }
+		  }
+		  previousWord = currentWord;
+		}
+		
+		//Lista para saber las palabras que más se repiten del HashMap
+		List<Integer> topCounts = tuples.values().stream()
+							                .sorted(Comparator.reverseOrder())
+							                .limit(TOP)
+							                .collect(Collectors.toList());
+		
+		//Guardar estado original del contador anterior
+		final List<Integer> topCounts2 = tuples.values().stream()
+                .sorted(Comparator.reverseOrder())
+                .limit(TOP)
+                .collect(Collectors.toList());
+		
+        //Lista de las palabras más repetidas
+		final String[] topTuples = new String[TOP];
+        tuples.forEach((tuple, count) -> {
+            int indexOfTuple = topCounts.indexOf(count);
+            if (indexOfTuple > -1) {
+                topTuples[indexOfTuple] = tuple;
+                topCounts.set(indexOfTuple, -1);
+            }
+        });
+        System.out.println("Top " + TOP + " tuplas más repetidas: " + Arrays.toString(topTuples) + "\nRespectivas cuentas: " + topCounts2);
+		return tuples;
+	}
+	
+	private static List<String> loremList(String lorem) {
+		String lorenClean = removePHtmlNotations(lorem.replaceAll("\\.", "")).toLowerCase();
+		StringTokenizer st = new StringTokenizer(lorenClean);
+		List<String> output = new ArrayList<String>();
+		//Crear ArrayList con todas las palabras
+		while (st.hasMoreTokens()) {
+			output.add(st.nextToken());
+		}
+		return output;
 	}
 }
