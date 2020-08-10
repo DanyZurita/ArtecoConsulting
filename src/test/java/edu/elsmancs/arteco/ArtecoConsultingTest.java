@@ -29,4 +29,19 @@ public class ArtecoConsultingTest {
 		Integer actualTotalPhrases = Logica.totalPhrases(ejemplo);
 		Assert.assertEquals(4, actualTotalPhrases, 0d);
 	}
+	
+	@Test
+    public void testTotalParagraphs() {
+		String ejemplo = "Esto es. </p> Un texto de ejemplo. </p> Para el caso test. De contar palabras. </p> ";
+		Integer actualTotalParagraphs = Logica.totalParagraphs(ejemplo);
+		Assert.assertEquals(3, actualTotalParagraphs, 0d);
+	}
+	
+	@Test
+    public void testRemovePHtmlNotations() {
+		String original = "Esto es. Un texto de ejemplo. Para el caso test. De contar palabras. ";
+		String raw = "Esto es. </p> Un texto de ejemplo. </p> Para el caso test. De contar palabras. </p> ";
+		String actualRemovedPHtmlNotations = Logica.removePHtmlNotations(raw);
+		Assert.assertEquals(original, actualRemovedPHtmlNotations);
+	}
 }
