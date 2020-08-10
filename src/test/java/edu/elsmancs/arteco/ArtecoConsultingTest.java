@@ -51,4 +51,16 @@ public class ArtecoConsultingTest {
 		Integer actualTotalPalindroms = Logica.totalPalindroms(ejemplo);
 		Assert.assertEquals(3, actualTotalPalindroms, 0d);
 	}
+	
+	
+	@Test
+	@SuppressWarnings("deprecation")
+    public void testTopWords() {
+		String raw = "Esto es. Un texto de ejemplo. Para el caso test. De contar palabras. Que se repiten. En el texto. Un un un de. ";
+		String[] original = new String[2];
+		original[0] = "un";
+		original[1] = "de";
+		String[] actualTopWords = Logica.topWords(raw, 2);
+		Assert.assertEquals(original, actualTopWords);
+	}
 }

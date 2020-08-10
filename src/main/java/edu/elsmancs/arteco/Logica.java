@@ -92,7 +92,7 @@ public class Logica {
         //Lista de las palabras más repetidas
 		final String[] topWords = getTopString(words, TOP);
 		
-        System.out.println("\nTop 5 palabras más repetidas: " + Arrays.toString(topWords) + "\nRespectivas cuentas: " + topCounts);
+        System.out.println("\nTop " + TOP + " palabras más repetidas: " + Arrays.toString(topWords) + "\nRespectivas cuentas: " + topCounts);
 		return topWords;
 	}
 	
