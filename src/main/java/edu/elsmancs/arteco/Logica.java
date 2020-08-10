@@ -60,7 +60,7 @@ public class Logica {
 		return numParagraphs;
 	}
 	
-	private static String removePHtmlNotations(String loren) {
+	static String removePHtmlNotations(String loren) {
 		String lorenClean = loren.replaceAll("<p>", "");
 		lorenClean = lorenClean.replaceAll("</p>", "");
 		return lorenClean;
