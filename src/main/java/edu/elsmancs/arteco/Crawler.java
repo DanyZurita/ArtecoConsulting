@@ -13,7 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Crawler {
-
+	
+	/* Intento de utilitzar Selenium para parsear la URL, fallido
 	public static void getURL(String url) {
 		System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
@@ -25,6 +26,7 @@ public class Crawler {
 				+ "Text : " + loren);
 		driver.quit();
 	}
+	*/
 	
 	public static String getURLJSoup(String url) {
 		String output = "";
