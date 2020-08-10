@@ -44,4 +44,11 @@ public class ArtecoConsultingTest {
 		String actualRemovedPHtmlNotations = Logica.removePHtmlNotations(raw);
 		Assert.assertEquals(original, actualRemovedPHtmlNotations);
 	}
+	
+	@Test
+    public void testTotalPalindroms() {
+		String ejemplo = "Lorem ipsum dolor sit amet, non consectetur adipiscing elit. Etiam sed velit a ante non parap.";
+		Integer actualTotalPalindroms = Logica.totalPalindroms(ejemplo);
+		Assert.assertEquals(3, actualTotalPalindroms, 0d);
+	}
 }
